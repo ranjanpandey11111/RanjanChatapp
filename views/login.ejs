@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      </style>
+  </head>
+  <body>
+  <span color="red"><% if (msg) { %>
+    <h2><%= msg %></h2>
+<% } %></span>
+    <ul id="messages"></ul>
+    <form action="login" method="post">
+      <label>user</label><input name="user" id="user-name"/><input type="submit" value="Login">
+    </form>
+    
+  </body>
+</html>
