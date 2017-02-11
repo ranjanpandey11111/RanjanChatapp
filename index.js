@@ -3,6 +3,8 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var bodyParser = require('body-parser');
 app.set('view engine', 'ejs');
+var path = require('path');
+app.set('views', path.join(__dirname, 'views'));
 var MongoClient = require('mongodb').MongoClient;
 MongoClient.connect("mongodb://localhost:27017/chat", function(err, db) {
   if(err) {console.log("not connedet");} 
@@ -14,7 +16,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 app.get('/', function(req, res){//console.log(req.body)
-  res.sendFile(__dirname + '/login.html')
+  //res.sendFile(__dirname + '/login.ejs')
+  res.render('login',{msg: "Lgin"});
   //res.sendFile(__dirname + '/index.html');
 });
 app.post('/login', function(req, res){//console.log(req.body.user)
@@ -24,8 +27,8 @@ app.post('/login', function(req, res){//console.log(req.body.user)
   var collection=db.collection('users');
 	collection.find({namwe: req.body.user}).toArray(function(err, items) {console.log(items.length)
             if(err){console.log("error")}
-			if(items.length===0){res.redirect('/');}
-			else{res.sendFile(__dirname + '/index.html',{"msg":"wrong user"});}
+			if(items.length===0){res.render('login',{msg: "Wrong User"})}
+			else{res.render('index',{msg: "Welcome MR"+ ' ' + req.body.user})}
                         
         });
  });
