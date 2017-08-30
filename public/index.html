@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="/style.css" rel="stylesheet">
+<title>Websocket</title>
+</head>
+<body>
+
+<div id="simple-chat">
+ <div class="chat">
+  <div class="chat-title">
+    <h1>Test Chat</h1>
+    <h2>Ranjan</h2>
+    <figure class="avatar">
+      <img src="" alt="profilepic"/></figure>
+  </div>
+  <div class="messages">
+    <div class="messages-content" id="handle"></div>
+	<div id="feedback"></div>
+  </div>
+  <div class="message-box">
+    <input id="user-name" type="text" placeholder="Select your name..." />
+    <textarea type="text" id="message" class="message-input" placeholder="Type message..."></textarea>
+    <button id="send" class="message-submit">Send</button>
+  </div>
+
+</div>
+<div class="bg"></div>
+</div>
+<script src="/chat.js"></script>
+</body>
+</html>
